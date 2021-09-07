@@ -1,0 +1,29 @@
+@import "./Vars.scss";
+
+.Subscribe {
+    width: 100%;
+    padding: 16px;
+    box-shadow: 0 3px 3px -2px rgba(0,0,0,.2),0 3px 4px 0 rgba(0,0,0,.14),0 1px 8px 0 rgba(0,0,0,.12);
+}
+
+.Subscribe__button {
+    width: calc(100% - 40px);
+    margin: 10px 20px;
+    padding: 8px;
+    background-color: $main-color;
+    color: white;
+    border-radius: 10px;
+    border-color: white;
+}
+
+.Subscribe__buttonContainer {
+    display: flex;
+    align-items: center;
+}
+
+@media (min-width: 550px) {
+    .Subscribe {
+        display: grid;
+        grid-template-columns: 80% 20%;
+    }
+}

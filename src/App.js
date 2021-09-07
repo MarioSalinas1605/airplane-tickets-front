@@ -1,7 +1,7 @@
 import { Layout } from './components/Layout';
 import { Landing } from './containers/Landing';
 
-import './App.css';
+import '../src/assets/styles/App.scss';
 
 function App() {
   return (

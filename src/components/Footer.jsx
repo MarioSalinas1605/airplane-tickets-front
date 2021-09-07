@@ -1,6 +1,12 @@
+import '../assets/styles/Footer.scss'
+
 function Footer() {
     return (
-        <h1>Footer</h1>
+        <footer className="Footer">
+            <a href="/">Terminos de uso</a>
+            <a href="/">Declaración de privacidad</a>
+            <a href="/">Centro de ayuda</a>
+        </footer>
     )
 }
 

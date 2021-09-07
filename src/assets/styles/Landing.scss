@@ -1,0 +1,21 @@
+.Landing {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.Landing_main {
+    max-width: 1200px;
+}
+
+.Landing_subscribe {
+    width: 100%;
+}
+
+@media (min-width: 550px) {
+    .Landing_main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

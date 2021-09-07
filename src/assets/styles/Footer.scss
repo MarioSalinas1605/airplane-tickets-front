@@ -1,0 +1,21 @@
+@import "./Vars.scss";
+
+.Footer {
+    align-items: center;
+    background-color: $secondary-background;
+    display: flex;
+    height: 100px;
+    width: 100%;
+}
+  
+.Footer a {
+    color: $font-color;
+    cursor: pointer;
+    font-size: 14px;
+    padding-left: 30px;
+    text-decoration: none;
+}
+  
+.Footer a:hover {
+    text-decoration: underline;
+}

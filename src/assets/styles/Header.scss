@@ -1,0 +1,62 @@
+@import "./Vars.scss";
+
+header {
+    padding: 10px;
+    color: $main-color;
+}
+
+.Header_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Header__Icon {
+    text-decoration: none;
+
+    & h1 {
+        color: $main-color
+    }
+}
+
+.Header__MenuIcon {
+    height: 50px;
+    background-color: $secondary-background;
+    color: $font-color;
+    border-radius: 10px;
+    border-color: transparent;
+    box-shadow: 0 3px 3px -2px rgba(0,0,0,.2),0 3px 4px 0 rgba(0,0,0,.14),0 1px 8px 0 rgba(0,0,0,.12);
+}
+
+.Header_hamburgerItems {
+    background-color: $secondary-background;
+    & li {
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+    }
+}
+
+.Header__MenuList {
+    min-width: 300px;
+    display: none;
+
+    & ul {
+        display: flex;
+    }
+    
+    & li {
+        margin-left: 15px;
+        text-decoration: none;
+        list-style-type: none; 
+    }
+}
+
+@media (min-width: 550px) {
+    .Header__MenuIcon, .Header_hamburgerItems {
+        display: none;
+    }
+    .Header__MenuList {
+        display: inline;
+    }
+}

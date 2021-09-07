@@ -1,12 +1,44 @@
-import '../assets/styles/Header.css'
+import { useState } from 'react';
+
+import '../assets/styles/Header.scss';
+
 function Header() {
+    const [showHamburguerItems, setShowHamburguerItems] = useState(false);
+
+    const handleHamburguerButton = () => {
+        setShowHamburguerItems(prevState => !prevState);
+    }
+
     return (
-        <header>
-            <img src="" alt="" />
-            <div className="header__menu">
-                <a href="/">Menu</a>
+        <header className="Header">
+            <div className="Header_container">
+                <a href="/" className="Header__Icon">
+                    <h1>✈️ Fly</h1>
+                </a>
+                <button className="Header__MenuIcon" onClick={handleHamburguerButton}>Menu</button>
+
+                <div className="Header__MenuList">
+                    <ul>
+                        <li>Cuenta</li>
+                        <li>Reservaciones</li>
+                        <li>Pagar</li>
+                    </ul>
+                </div>
             </div>
-        </header>
+
+
+            {
+                showHamburguerItems && (
+                    <div className="Header_hamburgerItems">
+                        <ul>
+                            <li>Cuenta</li>
+                            <li>Reservaciones</li>
+                            <li>Pagar</li>
+                        </ul>
+                    </div>
+                )
+            }
+        </header >
     )
 }
 
