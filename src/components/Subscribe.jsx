@@ -1,4 +1,5 @@
-import '../assets/styles/Subscribe.scss'
+import React from 'react';
+import '@styles/Subscribe.scss'
 
 function Subscribe() {
     return (

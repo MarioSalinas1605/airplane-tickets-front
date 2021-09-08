@@ -1,6 +1,7 @@
+import React from 'react';
 import offerImage from '../assets/images/offer.jpg'
 
-import '../assets/styles/Offers.scss';
+import '@styles/Offers.scss';
 
 function Offers() {
     return (

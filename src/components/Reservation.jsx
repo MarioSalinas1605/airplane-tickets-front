@@ -1,4 +1,5 @@
-import '../assets/styles/Reservation.scss';
+import React from 'react';
+import '@styles/Reservation.scss';
 
 function Reservation() {
     return (

@@ -1,4 +1,6 @@
-import '../assets/styles/ChooseFly.scss'
+import React from 'react';
+
+import '@styles/ChooseFly.scss'
 
 function ChooseFly() {
     return (

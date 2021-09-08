@@ -1,8 +1,9 @@
-import { ChooseFly } from '../components/ChooseFly.jsx';
-import { Offers } from '../components/Offers.jsx';
-import { Subscribe } from '../components/Subscribe.jsx';
+import React, { useEffect } from 'react';
+import { ChooseFly } from '@components/ChooseFly.jsx';
+import { Offers } from '@components/Offers.jsx';
+import { Subscribe } from '@components/Subscribe.jsx';
 
-import '../assets/styles/Landing.scss';
+import '@styles/Landing.scss';
 
 function Landing() {
 

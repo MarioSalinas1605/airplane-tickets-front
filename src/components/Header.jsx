@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-import '../assets/styles/Header.scss';
+import '@styles/Header.scss';
 
 function Header() {
     const [showHamburguerItems, setShowHamburguerItems] = useState(false);

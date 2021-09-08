@@ -1,4 +1,5 @@
-import '../assets/styles/ScheduleFlight.scss'
+import React from 'react';
+import '@styles/ScheduleFlight.scss'
 
 function ScheduleFlight() {
     return (
