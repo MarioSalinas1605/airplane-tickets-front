@@ -1,5 +1,6 @@
 import React from 'react';
-import '@styles/UserData.scss'
+
+import '../assets/styles/UserData.scss';
 
 function UserData() {
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
-import { ScheduleFlight } from '@components/ScheduleFlight.jsx';
+import { ScheduleFlight } from '../components/ScheduleFlight.jsx';
 
-import '@styles/ListOfFlights.scss'
+import '../assets/styles/ListOfFlights.scss';
 
 function ListOfFlights() {
     return (

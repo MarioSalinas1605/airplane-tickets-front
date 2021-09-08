@@ -10,11 +10,7 @@ module.exports = {
     },
     mode: 'development',
     resolve: {
-        extensions: ['.js', '.jsx'],
-        alias: {
-            '@components': path.resolve(__dirname, 'src/components/'),
-            '@styles': path.resolve(__dirname, 'src/assets/styles/')
-        }
+        extensions: ['.js', '.jsx']
     },
     module: {
         rules: [

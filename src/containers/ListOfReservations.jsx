@@ -1,6 +1,7 @@
 import React from 'react';
-import { Reservation } from '@components/Reservation.jsx';
-import '@styles/ListOfReservations.scss';
+import { Reservation } from '../components/Reservation.jsx';
+
+import '../assets/styles/ListOfReservations.scss';
 
 function ListOfReservations() {
     return (
