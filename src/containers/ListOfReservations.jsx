@@ -1,19 +1,25 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Reservation } from '../components/Reservation.jsx';
 
 import '../assets/styles/ListOfReservations.scss';
 
 function ListOfReservations() {
+    const reservations = useSelector(state => state.reservations);
+    const reducer = (sum, val) => sum + parseFloat(val.price);
+
+    const total = reservations.reduce(reducer, 0);
+
     return (
         <div className="ListOfReservations">
             <section className="ListOfReservations__title">
                 <h3>Tus reservaciones</h3>
-                <h3>Total: $1000</h3>
+                <h3>Total: {total}</h3>
             </section>
             <div className="LisOfReservations__container">
                 {
-                    [0, 1].map((item, index) => (
-                        <Reservation key={index} />
+                    reservations.map((reservation, index) => (
+                        <Reservation key={reservation.code} reservationData={reservation} />
                     ))
                 }
             </div>

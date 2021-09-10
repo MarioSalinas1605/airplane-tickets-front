@@ -1,7 +1,17 @@
-import { ADD_RESERVATION, LOAD_FLIGHTS, LOAD_CITIES } from '../types/index.js';
+import { ADD_RESERVATION, LOAD_FLIGHTS, LOAD_CITIES, REMOVE_RESERVATION, CLEAR_RESERVATION } from '../types/index.js';
 
 export const addReservation = payload => ({
     type: ADD_RESERVATION,
+    payload
+});
+
+export const removeReservation = payload => ({
+    type: REMOVE_RESERVATION,
+    payload
+});
+
+export const clearReservation = payload => ({
+    type: CLEAR_RESERVATION,
     payload
 });
 

@@ -1,7 +1,26 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+
+import { addReservation } from '../actions/index.js';
 import '../assets/styles/ScheduleFlight.scss';
 
-function ScheduleFlight({ dataFlight }) {
+function ScheduleFlight({ dataFlight, numSeats, origin, destination }) {
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const handleChooseFlight = () => {
+        const reservationData = {
+            ...dataFlight,
+            numSeats,
+            origin,
+            destination
+        }
+        console.log(reservationData);
+        dispatch(addReservation(reservationData));
+        history.push('/');
+    }
+
     return (
         <article className="ListOfFlights__article">
             <div className="ListOfFlights__articleContent">
@@ -14,7 +33,7 @@ function ScheduleFlight({ dataFlight }) {
                     <p>Llegada</p>
                 </div>
                 <div className="ListOfFlights__buttonContainer">
-                    <button className="ListOfFlights__button">{`Elegir Tarifa: ${dataFlight.price}`}</button>
+                    <button className="ListOfFlights__button" onClick={handleChooseFlight}>{`Elegir Tarifa: ${dataFlight.price}`}</button>
                 </div>
             </div>
         </article>

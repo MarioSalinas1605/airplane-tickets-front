@@ -7,7 +7,7 @@ import '../assets/styles/ListOfFlights.scss';
 
 function ListOfFlights(props) {
     useFetchFlights();
-    const { id } = props.match.params;
+    const { id, numSeats } = props.match.params;
     const flights = useSelector(state => state.flights);
     const [filteredFlights, setFilteredFlights] = useState({});
 
@@ -29,6 +29,9 @@ function ListOfFlights(props) {
                         <ScheduleFlight
                             key={index}
                             dataFlight={flight}
+                            numSeats={numSeats}
+                            origin={filteredFlights.origin}
+                            destination={filteredFlights.destination}
                         />
                     ))
                 }

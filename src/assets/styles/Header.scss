@@ -10,12 +10,8 @@ header {
     justify-content: space-between;
 }
 
-.Header__Icon {
-    text-decoration: none;
-
-    & h1 {
-        color: $main-color
-    }
+.Header__title {
+    color: $main-color
 }
 
 .Header__MenuIcon {

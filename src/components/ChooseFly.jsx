@@ -34,7 +34,7 @@ function ChooseFly(props) {
             alert('Completa los campos')
         } else {
             const flight = flights.find(flightData => flightData.origin === origin && flightData.destination === destination)
-            history.push(`/flights/${flight.id}`);
+            history.push(`/flights/${flight.id}/numSeats/${numSeats}`);
         }
     }
 

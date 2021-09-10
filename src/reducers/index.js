@@ -1,4 +1,4 @@
-import { LOAD_FLIGHTS, ADD_RESERVATION, LOAD_CITIES } from '../types/index.js';
+import { LOAD_FLIGHTS, ADD_RESERVATION, LOAD_CITIES, REMOVE_RESERVATION, CLEAR_RESERVATION } from '../types/index.js';
 const reducer = (state, action) => {
     switch (action.type) {
         case LOAD_FLIGHTS:
@@ -16,7 +16,17 @@ const reducer = (state, action) => {
                 ...state,
                 reservations: [...state.reservations, action.payload]
             };
-
+        case REMOVE_RESERVATION:
+            const filteredReservations = state.reservations.filter(reservation => reservation.code != action.payload)
+            return {
+                ...state,
+                reservations: [...filteredReservations]
+            }
+        case CLEAR_RESERVATION:
+            return {
+                ...state,
+                reservations: []
+            }
         default:
             return state;
     }
