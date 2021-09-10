@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
 
 import '../assets/styles/ChooseFly.scss';
 
-function ChooseFly() {
-    const cities = useSelector((state) => state.cities)
+function ChooseFly(props) {
+    const originList = useSelector(state => state.cities);
+    const flights = useSelector(state => state.flights);
+    const [destinationList, setDestinationList] = useState([]);
     const [origin, setOrigin] = useState('');
     const [destination, setDestination] = useState('');
     const [numSeats, setNumSeats] = useState(0);
+    const history = useHistory();
 
     const handleOriginChange = event => {
+        console.log(event.target.value);
         setOrigin(event.target.value);
+    }
+
+    const hangleDestinationChange = event => {
+        console.log(event.target.value);
+        setDestination(event.target.value);
     }
 
     const handleNumPassengers = event => {
@@ -22,13 +32,16 @@ function ChooseFly() {
         console.log('handleSubmit');
         if (!origin || !destination || numSeats === 0) {
             alert('Completa los campos')
+        } else {
+            const flight = flights.find(flightData => flightData.origin === origin && flightData.destination === destination)
+            history.push(`/flights/${flight.id}`);
         }
     }
 
     useEffect(() => {
         if (origin) {
-            const filterdDestination = cities.find(city => city.origin === origin);
-            setDestination(filterdDestination);
+            const filterdDestination = originList.find(city => city.origin === origin)?.destinations;
+            setDestinationList(filterdDestination);
         }
     }, [origin])
 
@@ -42,12 +55,16 @@ function ChooseFly() {
                 <h3>Reservar un vuelo</h3>
                 <div className="ChooseFly__formContainer">
                     <div className="ChooseFly__city">
-                        <select name="destiny" value={origin} onChange={handleOriginChange}>
+                        <select
+                            name="destiny"
+                            value={origin}
+                            onChange={handleOriginChange}
+                        >
                             {
                                 !origin && <option value="choose" defaultValue>Elige un origen</option>
                             }
                             {
-                                cities.map(originCity => (
+                                originList.map(originCity => (
                                     <option
                                         key={originCity.id}
                                         value={originCity.origin}
@@ -60,15 +77,20 @@ function ChooseFly() {
                         <span>Origen</span>
                     </div>
                     <div className="ChooseFly__city">
-                        <select name="origin" disabled={!origin}>
+                        <select
+                            name="origin"
+                            disabled={!origin}
+                            value={destination}
+                            onChange={hangleDestinationChange}
+                        >
                             {!origin && <option value="choose" defaultValue>Elige un destino</option>}
                             {
-                                destination.destinations?.map((destinationCity, index) => (
+                                destinationList.map((destination, index) => (
                                     <option
                                         key={index}
-                                        value={destinationCity}
+                                        value={destination}
                                     >
-                                        {destinationCity}
+                                        {destination}
                                     </option>
                                 ))
                             }
