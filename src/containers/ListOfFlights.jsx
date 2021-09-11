@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useFetchFlights } from '../hooks/useFetchFlights.js';
 import { ScheduleFlight } from '../components/ScheduleFlight.jsx';
+import { Loader } from '../components/Loader.jsx';
+import { Error } from '../components/Error.jsx';
 
 import '../assets/styles/ListOfFlights.scss';
 
 function ListOfFlights(props) {
-    useFetchFlights();
+    const { loading, error } = useFetchFlights();
     const { id, numSeats } = props.match.params;
     const flights = useSelector(state => state.flights);
     const [filteredFlights, setFilteredFlights] = useState({});
@@ -17,7 +19,14 @@ function ListOfFlights(props) {
         console.log(filteredFlights);
     }, [flights])
 
-    console.log(filteredFlights);
+    if (error) {
+        return <Error />
+    }
+
+    if (loading) {
+        return <Loader />
+    }
+
     return (
         <div className="ListOfFlights">
             <div className="ListOfFlights__title">

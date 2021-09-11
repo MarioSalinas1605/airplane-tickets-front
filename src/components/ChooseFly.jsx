@@ -8,42 +8,36 @@ function ChooseFly(props) {
     const originList = useSelector(state => state.cities);
     const flights = useSelector(state => state.flights);
     const [destinationList, setDestinationList] = useState([]);
-    const [origin, setOrigin] = useState('');
-    const [destination, setDestination] = useState('');
-    const [numSeats, setNumSeats] = useState(0);
+    const [formState, setFormState] = useState({
+        numSeats: 0,
+        origin: '',
+        destination: ''
+    })
     const history = useHistory();
 
-    const handleOriginChange = event => {
-        console.log(event.target.value);
-        setOrigin(event.target.value);
-    }
-
-    const hangleDestinationChange = event => {
-        console.log(event.target.value);
-        setDestination(event.target.value);
-    }
-
-    const handleNumPassengers = event => {
-        setNumSeats(event.target.value);
+    const handleInput = event => {
+        setFormState(state => ({
+            ...state,
+            [event.target.id]: event.target.value
+        }))
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('handleSubmit');
-        if (!origin || !destination || numSeats === 0) {
+        if (!formState.origin || !formState.destination || formState.numSeats === 0) {
             alert('Completa los campos')
         } else {
-            const flight = flights.find(flightData => flightData.origin === origin && flightData.destination === destination)
-            history.push(`/flights/${flight.id}/numSeats/${numSeats}`);
+            const flight = flights.find(flightData => flightData.origin === formState.origin && flightData.destination === formState.destination)
+            history.push(`/flights/${flight.id}/numSeats/${formState.numSeats}`);
         }
     }
 
     useEffect(() => {
-        if (origin) {
-            const filterdDestination = originList.find(city => city.origin === origin)?.destinations;
+        if (formState.origin) {
+            const filterdDestination = originList.find(city => city.origin === formState.origin)?.destinations;
             setDestinationList(filterdDestination);
         }
-    }, [origin])
+    }, [formState.origin])
 
     return (
         <section className="ChooseFly">
@@ -56,12 +50,13 @@ function ChooseFly(props) {
                 <div className="ChooseFly__formContainer">
                     <div className="ChooseFly__city">
                         <select
-                            name="destiny"
-                            value={origin}
-                            onChange={handleOriginChange}
+                            id="origin"
+                            name="origin"
+                            value={formState.origin}
+                            onChange={handleInput}
                         >
                             {
-                                !origin && <option value="choose" defaultValue>Elige un origen</option>
+                                !formState.origin && <option value="choose" defaultValue>Elige un origen</option>
                             }
                             {
                                 originList.map(originCity => (
@@ -78,12 +73,13 @@ function ChooseFly(props) {
                     </div>
                     <div className="ChooseFly__city">
                         <select
-                            name="origin"
-                            disabled={!origin}
-                            value={destination}
-                            onChange={hangleDestinationChange}
+                            id="destination"
+                            name="destination"
+                            disabled={!formState.origin}
+                            value={formState.destination}
+                            onChange={handleInput}
                         >
-                            {!destination && <option value="choose" defaultValue>Elige un destino</option>}
+                            {!formState.destination && <option value="choose" defaultValue>Elige un destino</option>}
                             {
                                 destinationList.map((destination, index) => (
                                     <option
@@ -100,12 +96,13 @@ function ChooseFly(props) {
 
                     <div className="ChooseFly__passengers">
                         <input
+                            id="numSeats"
                             type="number"
                             min="0"
                             max="144"
                             placeholder="0"
-                            value={numSeats}
-                            onChange={handleNumPassengers}
+                            value={formState.numSeats}
+                            onChange={handleInput}
                         />
                         <span>Número de pasajeros</span>
                     </div>

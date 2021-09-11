@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useFetchFlights } from '../hooks/useFetchFlights.js';
 import { ChooseFly } from '../components/ChooseFly.jsx';
 import { Offers } from '../components/Offers.jsx';
 import { Subscribe } from '../components/Subscribe.jsx';
+import { Loader } from '../components/Loader.jsx';
+import { Error } from '../components/Error.jsx';
 
 import { setFinishPayment } from '../actions';
 import '../assets/styles/Landing.scss';
 
 function Landing() {
     const dispatch = useDispatch();
-    useFetchFlights();
+    const { loading, error } = useFetchFlights();
     const isPaymentFinished = useSelector(state => state.paymentFinished);
 
     useEffect(() => {
@@ -21,6 +23,14 @@ function Landing() {
             }
         }
     }, [])
+
+    if (error) {
+        return <Error />
+    }
+
+    if (loading) {
+        return <Loader />
+    }
 
     return (
         <div className="Landing">

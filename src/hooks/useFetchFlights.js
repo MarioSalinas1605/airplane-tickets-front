@@ -7,14 +7,14 @@ import { loadFlights, loadCities } from '../actions/index.js'
 export const useFetchFlights = () => {
     const dispatch = useDispatch();
     const [fetch_data, setFetchData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
     const flights = useSelector(state => state.flights);
 
     useEffect(() => {
+
         const fetchData = async () => {
-            setLoading(true);
             try {
                 const { data } = await axios({
                     url: `http://still-taiga-02756.herokuapp.com/flights`,
@@ -31,7 +31,10 @@ export const useFetchFlights = () => {
 
         if (flights.length === 0) {
             fetchData();
+        } else {
+            setLoading(false);
         }
     }, []);
+
     return { data: fetch_data, loading, error };
 }
