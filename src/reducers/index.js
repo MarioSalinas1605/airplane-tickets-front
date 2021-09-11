@@ -1,4 +1,4 @@
-import { LOAD_FLIGHTS, ADD_RESERVATION, LOAD_CITIES, REMOVE_RESERVATION, CLEAR_RESERVATION } from '../types/index.js';
+import { LOAD_FLIGHTS, ADD_RESERVATION, LOAD_CITIES, REMOVE_RESERVATION, CLEAR_RESERVATION, SET_FINISH_PAYMENT } from '../types/index.js';
 const reducer = (state, action) => {
     switch (action.type) {
         case LOAD_FLIGHTS:
@@ -26,6 +26,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 reservations: []
+            }
+        case SET_FINISH_PAYMENT:
+            return {
+                ...state,
+                paymentFinished: action.payload
             }
         default:
             return state;

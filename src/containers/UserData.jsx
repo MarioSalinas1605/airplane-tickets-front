@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
-import { clearReservation } from '../actions';
+import { clearReservation, setFinishPayment } from '../actions';
 import '../assets/styles/UserData.scss';
 
 function UserData() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const flights = useSelector(state => state.flights);
+    const reservations = useSelector(state => state.reservations);
     const [formState, setFormState] = useState({
         name: '',
         lastName: '',
@@ -28,11 +28,12 @@ function UserData() {
         event.preventDefault();
         console.log('handleSubmit');
         dispatch(clearReservation());
+        dispatch(setFinishPayment(true));
         history.push('/');
     }
 
-    if (flights.length === 0) {
-        return <h3>Por favor selecciona un vuelo</h3>
+    if (reservations.length === 0) {
+        return <h3 className="UserData__emptyTitle">Por favor selecciona un vuelo 🙂</h3>
     }
 
     return (

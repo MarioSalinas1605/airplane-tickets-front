@@ -14,6 +14,11 @@ header {
     color: $main-color
 }
 
+a {
+    text-decoration: none;
+    color: $main-color;
+}
+
 .Header__MenuIcon {
     height: 50px;
     background-color: $secondary-background;

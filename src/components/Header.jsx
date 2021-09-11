@@ -13,7 +13,7 @@ function Header() {
     return (
         <header className="Header">
             <div className="Header_container">
-                <Link to="/">
+                <Link className="Header__link" to="/">
                     <h1 className="Header__title">✈️ Fly</h1>
                 </Link>
                 <a href="/" className="Header__Icon">
@@ -23,11 +23,10 @@ function Header() {
 
                 <div className="Header__MenuList">
                     <ul>
-                        <li>Cuenta</li>
                         <Link to="/reservations">
                             <li>Reservaciones</li>
                         </Link>
-                        <Link to="confirmation-data">
+                        <Link to="/confirmation-data">
                             <li>Pagar</li>
                         </Link>
                     </ul>
@@ -39,9 +38,12 @@ function Header() {
                 showHamburguerItems && (
                     <div className="Header_hamburgerItems">
                         <ul>
-                            <li>Cuenta</li>
-                            <li>Reservaciones</li>
-                            <li>Pagar</li>
+                            <Link to="/reservations">
+                                <li>Reservaciones</li>
+                            </Link>
+                            <Link to="/confirmation-data">
+                                <li>Pagar</li>
+                            </Link>
                         </ul>
                     </div>
                 )

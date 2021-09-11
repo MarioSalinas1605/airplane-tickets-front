@@ -83,7 +83,7 @@ function ChooseFly(props) {
                             value={destination}
                             onChange={hangleDestinationChange}
                         >
-                            {!origin && <option value="choose" defaultValue>Elige un destino</option>}
+                            {!destination && <option value="choose" defaultValue>Elige un destino</option>}
                             {
                                 destinationList.map((destination, index) => (
                                     <option

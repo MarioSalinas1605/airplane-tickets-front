@@ -1,4 +1,4 @@
-import { ADD_RESERVATION, LOAD_FLIGHTS, LOAD_CITIES, REMOVE_RESERVATION, CLEAR_RESERVATION } from '../types/index.js';
+import { ADD_RESERVATION, LOAD_FLIGHTS, LOAD_CITIES, REMOVE_RESERVATION, CLEAR_RESERVATION, SET_FINISH_PAYMENT } from '../types/index.js';
 
 export const addReservation = payload => ({
     type: ADD_RESERVATION,
@@ -22,5 +22,10 @@ export const loadFlights = payload => ({
 
 export const loadCities = payload => ({
     type: LOAD_CITIES,
+    payload
+})
+
+export const setFinishPayment = payload => ({
+    type: SET_FINISH_PAYMENT,
     payload
 })

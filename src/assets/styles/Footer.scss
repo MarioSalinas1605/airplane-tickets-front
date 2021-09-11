@@ -1,6 +1,8 @@
 @import "./Vars.scss";
 
 .Footer {
+    position: absolute;
+    bottom: 0;
     align-items: center;
     background-color: $secondary-background;
     display: flex;

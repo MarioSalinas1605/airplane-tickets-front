@@ -10,6 +10,10 @@ function ListOfReservations() {
 
     const total = reservations.reduce(reducer, 0);
 
+    if (!reservations.length) {
+        return <h3 className="ListOfReservations__emptyTitle">Por favor selecciona un vuelo 🙂</h3>
+    }
+
     return (
         <div className="ListOfReservations">
             <section className="ListOfReservations__title">
