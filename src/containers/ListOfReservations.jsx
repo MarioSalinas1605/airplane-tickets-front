@@ -18,7 +18,7 @@ function ListOfReservations() {
         <div className="ListOfReservations">
             <section className="ListOfReservations__title">
                 <h3>Tus reservaciones</h3>
-                <h3>Total: {total}</h3>
+                <h3 className="ListOfReservations__total">Total: {total}</h3>
             </section>
             <div className="LisOfReservations__container">
                 {
